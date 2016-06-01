@@ -4,6 +4,7 @@
 #include "lauxlib.h"
 
 #define X_DISPLAY_MISSING
+#define LUA_COMPAT_APIINTCASTS
 #include "Imlib2.h"
 
 typedef Imlib_Image Image;
