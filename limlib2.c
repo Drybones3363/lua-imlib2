@@ -1242,46 +1242,46 @@ static const struct luaL_Reg f [] = {
   {NULL, NULL}
 };
 
-int luaopen_limlib2(lua_State *L) {
+int luaopen_limlib(lua_State *L) {
   imlib_context_set_anti_alias(1); /* Ensure anti-alias by default */
 
-  luaL_newmetatable(L, "imlib2.border");
+  luaL_newmetatable(L, "imlib.border");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, border_m);
-  luaL_register(L, "imlib2.border", border_f);
+  luaL_register(L, "imlib.border", border_f);
 
-  luaL_newmetatable(L, "imlib2.color");
+  luaL_newmetatable(L, "imlib.color");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, color_m);
-  luaL_register(L, "imlib2.color", color_f);
+  luaL_register(L, "imlib.color", color_f);
 
-  luaL_newmetatable(L, "imlib2.gradient");
+  luaL_newmetatable(L, "imlib.gradient");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, gradient_m);
-  luaL_register(L, "imlib2.gradient", gradient_f);
+  luaL_register(L, "imlib.gradient", gradient_f);
 
-  luaL_newmetatable(L, "imlib2.polygon");
+  luaL_newmetatable(L, "imlib.polygon");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, polygon_m);
   luaL_register(L, "imlib2.polygon", polygon_f);
 
-  luaL_newmetatable(L, "imlib2.font");
+  luaL_newmetatable(L, "imlib.font");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, font_m);
-  luaL_register(L, "imlib2.font", font_f);
+  luaL_register(L, "imlib.font", font_f);
 
-  luaL_newmetatable(L, "imlib2.image");
+  luaL_newmetatable(L, "imlib.image");
   lua_pushvalue(L, -1);
   lua_setfield(L, -2, "__index");
   luaL_register(L, NULL, image_m);
-  luaL_register(L, "imlib2.image", image_f);
+  luaL_register(L, "imlib.image", image_f);
 
-  luaL_register(L, "imlib2", f);
+  luaL_register(L, "imlib", f);
 
   return 1;
 }
