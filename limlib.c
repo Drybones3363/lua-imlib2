@@ -14,7 +14,7 @@ Requirements:
 
 */
 
-/*Wraps the imlib library */
+/* Wraps the imlib library */
 #include <string.h>
 #include </usr/local/include/lua.h>
 #include </usr/local/include/lauxlib.h>
@@ -105,7 +105,6 @@ static int colorm_tostring(lua_State *L) {
 static int colorm__index(lua_State *L) {
   Imlib_Color *c = check_color(L, 1);
   const char *field = luaL_checkstring(L, 2);
-
   if (strcmp(field, "red") == 0)
     lua_pushinteger(L, c->red);
   else if (strcmp(field, "green") == 0)
@@ -1281,7 +1280,7 @@ int luaopen_border (lua_State *L) {
 
   luaL_newmetatable(L, "imlib.border");
   luaL_newlib(L, border_m);
-  lua_setfield(L, -2, "__index");
+  //lua_setfield(L, -2, "__index");
   
   lua_pushstring(L, "__gc");
   lua_pushcfunction(L, Obj__gc);
@@ -1295,10 +1294,10 @@ int luaopen_color (lua_State *L) {
 
   luaL_newmetatable(L, "imlib.color");
   luaL_newlib(L, color_m);
-  lua_setfield(L, -2, "__index");
+  lua_setfield(L, -2, "__gc");
   
-  lua_pushstring(L, "__gc");
-  lua_pushcfunction(L, Obj__gc);
+  lua_pushstring(L, "__index");
+  lua_pushcfunction(L, colorm__index);
   lua_settable(L, -3);
   lua_pop(L, 1);
   return 1;
@@ -1381,6 +1380,6 @@ int main(int argc, char *argv[]) {
   luaopen_limlib(L);
   const char* ret = lua_tostring(L,luaL_dofile(L,strcat(argv[1],".lua")));
   printf("%s\n",ret);
-  lua_close(L);
+  //lua_close(L);
   return 0;
 }
