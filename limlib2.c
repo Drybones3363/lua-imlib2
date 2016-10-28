@@ -1,3 +1,5 @@
+// OUTDATED CODE, USED IN LUA 5.0/5.1 I THINK
+
 /* Wraps the Imlib2 library */
 #include <string.h>
 #include "lua.h"
